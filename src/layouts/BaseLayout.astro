@@ -1,0 +1,23 @@
+---
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import "@/styles/global.css";
+const { title = "Research Intelligence Portal", description = "AI4S 与 BCI 投资研究情报门户", current = "" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#f7f4ec" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header current={current} />
+    <slot />
+    <Footer />
+  </body>
+</html>

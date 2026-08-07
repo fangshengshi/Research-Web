@@ -1,0 +1,56 @@
+name: Sync private research
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 6 * * 1"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: research-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout public portal
+        uses: actions/checkout@v6
+        with:
+          path: web
+
+      - name: Checkout private research
+        uses: actions/checkout@v6
+        with:
+          repository: fangshengshi/Research
+          token: ${{ secrets.RESEARCH_REPO_TOKEN }}
+          path: research
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Sync and verify
+        working-directory: web
+        env:
+          RESEARCH_SOURCE: ../research
+        run: |
+          npm ci
+          npm run sync
+          npm run build
+
+      - name: Publish changed reports
+        working-directory: web
+        run: |
+          git config user.name "research-sync[bot]"
+          git config user.email "research-sync[bot]@users.noreply.github.com"
+          git add public/reports src/data/reports.json
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: 同步最新研究周报"
+          git push

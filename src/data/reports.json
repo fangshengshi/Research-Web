@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-08-07T00:00:00.000Z",
+  "tracks": {
+    "ai4s": {
+      "label": "AI for Science",
+      "shortLabel": "AI4S",
+      "description": "追踪人工智能驱动的药物发现、生命科学基础模型与实验自动化。",
+      "direction": "计算生物学 · AI 药物研发 · 科研基础设施",
+      "reports": [
+        {
+          "slug": "2026-08-07-weekly",
+          "title": "AI4S Weekly Intelligence",
+          "date": "2026-08-07",
+          "url": "/reports/ai4s/2026-08-07-weekly.html",
+          "format": "html",
+          "tags": ["Foundation Models", "Drug Discovery", "Automation"],
+          "latest": true
+        }
+      ]
+    },
+    "bci": {
+      "label": "Brain–Computer Interface",
+      "shortLabel": "BCI",
+      "description": "覆盖侵入式与非侵入式脑机接口、神经信号解码和临床转化。",
+      "direction": "神经工程 · 医疗器械 · 人机交互",
+      "reports": [
+        {
+          "slug": "2026-08-07-weekly",
+          "title": "BCI Weekly Intelligence",
+          "date": "2026-08-07",
+          "url": "/reports/bci/2026-08-07-weekly.html",
+          "format": "html",
+          "tags": ["Neural Interfaces", "Clinical", "Signal Decoding"],
+          "latest": true
+        }
+      ]
+    }
+  }
+}

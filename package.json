@@ -1,0 +1,20 @@
+{
+  "name": "research-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro check && ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "sync": "node scripts/sync-research.mjs",
+    "check": "ASTRO_TELEMETRY_DISABLED=1 astro check"
+  },
+  "dependencies": {
+    "astro": "^7.2.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.6",
+    "typescript": "^5.9.3"
+  }
+}

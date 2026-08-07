@@ -1,0 +1,16 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ReportViewer from "@/components/ReportViewer.astro";
+import { tracks } from "@/lib/reports";
+
+export function getStaticPaths() {
+  return Object.entries(tracks).flatMap(([track, data]) =>
+    data.reports.filter((report) => !report.latest).map((report) => ({ params: { track, slug: report.slug }, props: { track, data, report } }))
+  );
+}
+
+const { track, data, report } = Astro.props;
+---
+<BaseLayout title={`${report.title} | Research Intelligence Portal`} current={track}>
+  <ReportViewer track={track} trackLabel={data.shortLabel} report={report} />
+</BaseLayout>

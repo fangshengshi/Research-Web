@@ -1,0 +1,9 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ReportViewer from "@/components/ReportViewer.astro";
+import { tracks, getLatest } from "@/lib/reports";
+const report = getLatest("bci");
+---
+<BaseLayout title={`${report?.title ?? "BCI Latest"} | Research Intelligence Portal`} current="bci">
+  {report && <ReportViewer track="bci" trackLabel={tracks.bci.shortLabel} report={report} />}
+</BaseLayout>

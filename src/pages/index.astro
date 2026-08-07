@@ -1,0 +1,104 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ResearchCard from "@/components/ResearchCard.astro";
+import { tracks, getLatest, generatedAt } from "@/lib/reports";
+const ai4s = getLatest("ai4s");
+const bci = getLatest("bci");
+---
+
+<BaseLayout>
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Research intelligence / Life science frontier</p>
+          <h1 class="display">Ideas before they become consensus.</h1>
+          <p class="hero-intro">面向投资决策的前沿研究情报。持续追踪 AI for Science 与脑机接口，从技术信号中识别产业变化。</p>
+        </div>
+        <div class="hero-index" aria-label="研究覆盖范围">
+          <p>Coverage</p>
+          <strong>02</strong>
+          <span>Research verticals</span>
+          <dl>
+            <div><dt>01</dt><dd>AI for Science</dd></div>
+            <div><dt>02</dt><dd>Brain–Computer Interface</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="latest shell" aria-labelledby="latest-title">
+      <div class="section-head">
+        <div><p class="eyebrow">Current intelligence</p><h2 id="latest-title" class="section-title">最新研究</h2></div>
+        <p>每周更新的核心信号、产业进展与投资启示。</p>
+      </div>
+      <div class="latest-grid">
+        {ai4s && <ResearchCard track="ai4s" label={tracks.ai4s.shortLabel} report={ai4s} featured />}
+        {bci && <ResearchCard track="bci" label={tracks.bci.shortLabel} report={bci} featured />}
+      </div>
+    </section>
+
+    <section class="archive shell" id="archive" aria-labelledby="archive-title">
+      <div class="archive-copy">
+        <p class="eyebrow">Research library</p>
+        <h2 id="archive-title" class="section-title">历史归档</h2>
+        <p>按研究方向进入完整周报序列。站内索引支持标题、标签与日期筛选，原始 HTML 和图片资源保持原样展示。</p>
+      </div>
+      <div class="archive-links">
+        <a href="/ai4s/"><span><small>01</small><b>AI for Science</b></span><em>{tracks.ai4s.reports.length.toString().padStart(2, "0")} reports</em></a>
+        <a href="/bci/"><span><small>02</small><b>Brain–Computer Interface</b></span><em>{tracks.bci.reports.length.toString().padStart(2, "0")} reports</em></a>
+      </div>
+    </section>
+
+    <section class="directions" id="directions">
+      <div class="shell directions-inner">
+        <div><p class="eyebrow">Research thesis</p><h2 class="section-title">研究方向</h2></div>
+        <div class="direction-list">
+          <article><span>AI4S</span><h3>科学发现的计算化</h3><p>{tracks.ai4s.description}</p><small>{tracks.ai4s.direction}</small></article>
+          <article><span>BCI</span><h3>神经系统的工程化接口</h3><p>{tracks.bci.description}</p><small>{tracks.bci.direction}</small></article>
+        </div>
+        <p class="sync-note">Index refreshed <time datetime={generatedAt}>{new Date(generatedAt).toLocaleDateString("zh-CN")}</time></p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .hero { min-height: 690px; display: flex; align-items: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--rule); }
+  .hero::after { content: ""; position: absolute; width: 430px; height: 430px; inset: 50% -180px auto auto; border: 1px solid var(--rule); border-radius: 50%; box-shadow: 0 0 0 70px var(--paper), 0 0 0 71px var(--rule), 0 0 0 140px var(--paper), 0 0 0 141px var(--rule); opacity: 0.7; transform: translateY(-50%); }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 100px; align-items: end; position: relative; z-index: 1; padding-block: 90px; }
+  .hero-intro { max-width: 580px; margin: 35px 0 0; color: var(--ink-soft); font-family: var(--serif); font-size: clamp(1.08rem, 2vw, 1.35rem); line-height: 1.55; text-wrap: pretty; }
+  .hero-index { padding: 26px 0 4px 26px; border-inline-start: 1px solid var(--rule); }
+  .hero-index > p { margin: 0; color: var(--teal-dark); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .hero-index > strong { display: block; margin-top: 12px; font-family: var(--serif); font-size: 5rem; font-weight: 400; letter-spacing: -0.06em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .hero-index > span { color: var(--ink-faint); font-size: 0.72rem; }
+  dl { margin: 38px 0 0; }
+  dl div { display: grid; grid-template-columns: 30px 1fr; gap: 10px; padding-block: 11px; border-top: 1px solid var(--rule); }
+  dt { color: var(--teal-dark); font-size: 0.68rem; font-variant-numeric: tabular-nums; }
+  dd { margin: 0; font-size: 0.78rem; font-weight: 600; }
+  .latest { padding-block: 120px; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 48px; margin-bottom: 48px; }
+  .section-head > p { max-width: 370px; margin: 0; color: var(--ink-soft); font-family: var(--serif); font-size: 1.05rem; line-height: 1.55; }
+  .latest-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+  .archive { display: grid; grid-template-columns: minmax(240px, 0.75fr) 1.25fr; gap: 90px; padding-block: 35px 130px; }
+  .archive-copy > p:last-child { max-width: 420px; margin: 28px 0 0; color: var(--ink-soft); line-height: 1.7; text-wrap: pretty; }
+  .archive-links a { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding-block: 31px; border-bottom: 1px solid var(--rule); text-decoration: none; }
+  .archive-links a:first-child { border-top: 1px solid var(--rule); }
+  .archive-links span { display: flex; align-items: baseline; gap: 22px; }
+  .archive-links small { color: var(--teal-dark); font-size: 0.7rem; font-variant-numeric: tabular-nums; }
+  .archive-links b { font-family: var(--serif); font-size: clamp(1.45rem, 2.7vw, 2.25rem); font-weight: 500; letter-spacing: -0.025em; }
+  .archive-links em { color: var(--ink-faint); font-size: 0.7rem; font-style: normal; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  .directions { color: var(--paper); background: var(--navy); }
+  .directions-inner { display: grid; grid-template-columns: minmax(230px, 0.75fr) 1.25fr; gap: 90px; padding-block: 110px; }
+  .directions .eyebrow { color: oklch(0.75 0.09 188); }
+  .direction-list article { padding: 30px 0 34px; border-top: 1px solid oklch(1 0 0 / 0.15); }
+  .direction-list article:last-child { border-bottom: 1px solid oklch(1 0 0 / 0.15); }
+  .direction-list span, .direction-list small { color: oklch(0.75 0.09 188); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .direction-list h3 { margin: 13px 0 9px; font-family: var(--serif); font-size: clamp(1.55rem, 3vw, 2.4rem); font-weight: 500; letter-spacing: -0.025em; }
+  .direction-list p { max-width: 590px; margin: 0 0 18px; color: oklch(0.84 0.018 240); text-wrap: pretty; }
+  .sync-note { align-self: end; margin: 0; color: oklch(0.72 0.018 240); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .sync-note time { font-variant-numeric: tabular-nums; }
+  @media (max-width: 850px) { .hero-grid { grid-template-columns: 1fr; gap: 52px; } .hero-index { max-width: 330px; } .hero { min-height: auto; } .archive, .directions-inner { grid-template-columns: 1fr; gap: 48px; } .directions-inner { padding-block: 85px; } }
+  @media (max-width: 700px) { .latest-grid { grid-template-columns: 1fr; } .section-head { align-items: flex-start; flex-direction: column; gap: 22px; } .latest { padding-block: 85px; } .archive { padding-block: 15px 90px; } }
+  @media (max-width: 520px) { .hero-grid { padding-block: 72px; } .hero-index { padding-inline-start: 20px; } .archive-links a { align-items: flex-start; flex-direction: column; gap: 8px; } .archive-links span { gap: 14px; } }
+</style>

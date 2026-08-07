@@ -1,0 +1,78 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ResearchCard from "@/components/ResearchCard.astro";
+import { getTrack, type TrackKey } from "@/lib/reports";
+const { track } = Astro.props as { track: TrackKey };
+const data = getTrack(track)!;
+const years = [...new Set(data.reports.map((report) => report.date.slice(0, 4)))];
+---
+
+<BaseLayout title={`${data.shortLabel} Research | Research Intelligence Portal`} description={data.description} current={track}>
+  <main>
+    <section class="track-hero shell">
+      <div>
+        <p class="eyebrow">Research vertical / {data.shortLabel}</p>
+        <h1>{data.label}</h1>
+      </div>
+      <div class="track-description"><p>{data.description}</p><small>{data.direction}</small></div>
+    </section>
+    <section class="library shell" aria-labelledby="library-title">
+      <div class="library-head">
+        <div><p class="eyebrow">Intelligence archive</p><h2 id="library-title">周报归档</h2></div>
+        <div class="filters" aria-label="归档筛选">
+          <label><span>搜索</span><input type="search" placeholder="标题或标签" data-search /></label>
+          <label><span>日期</span><select data-year><option value="">全部年份</option>{years.map((year) => <option value={year}>{year}</option>)}</select></label>
+        </div>
+      </div>
+      <p class="result-count" aria-live="polite"><span data-count>{data.reports.length}</span> reports</p>
+      <div class="report-grid" data-report-grid>
+        {data.reports.map((report) => <ResearchCard track={track} label={data.shortLabel} report={report} />)}
+      </div>
+      <p class="empty" data-empty hidden>没有符合当前条件的报告。</p>
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  const search = document.querySelector<HTMLInputElement>("[data-search]");
+  const year = document.querySelector<HTMLSelectElement>("[data-year]");
+  const cards = [...document.querySelectorAll<HTMLElement>("[data-report-card]")];
+  const count = document.querySelector<HTMLElement>("[data-count]");
+  const empty = document.querySelector<HTMLElement>("[data-empty]");
+  function filterReports() {
+    const query = search?.value.trim().toLowerCase() ?? "";
+    const selectedYear = year?.value ?? "";
+    let visible = 0;
+    cards.forEach((card) => {
+      const matchesText = `${card.dataset.title} ${card.dataset.tags}`.includes(query);
+      const matchesYear = !selectedYear || card.dataset.date?.startsWith(selectedYear);
+      card.hidden = !(matchesText && matchesYear);
+      if (!card.hidden) visible += 1;
+    });
+    if (count) count.textContent = String(visible);
+    if (empty) empty.hidden = visible !== 0;
+  }
+  search?.addEventListener("input", filterReports);
+  year?.addEventListener("change", filterReports);
+</script>
+
+<style>
+  .track-hero { min-height: 480px; display: grid; grid-template-columns: 1.25fr 0.75fr; align-items: end; gap: 90px; padding-block: 80px; border-bottom: 1px solid var(--rule); }
+  h1 { margin: 0; max-width: 12ch; font-family: var(--serif); font-size: clamp(3.5rem, 8vw, 7.5rem); font-weight: 500; letter-spacing: -0.055em; line-height: 0.92; text-wrap: balance; }
+  .track-description p { margin: 0 0 24px; color: var(--ink-soft); font-family: var(--serif); font-size: 1.2rem; line-height: 1.55; text-wrap: pretty; }
+  .track-description small { color: var(--teal-dark); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .library { padding-block: 100px 40px; }
+  .library-head { display: flex; align-items: end; justify-content: space-between; gap: 44px; }
+  h2 { margin: 0; font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.35rem); font-weight: 500; letter-spacing: -0.035em; line-height: 1.05; }
+  .filters { display: flex; gap: 12px; }
+  label { display: grid; gap: 6px; }
+  label span { color: var(--ink-faint); font-size: 0.66rem; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; }
+  input, select { min-height: 44px; border: 1px solid var(--rule); border-radius: 8px; padding-inline: 13px; color: var(--ink); background: var(--paper-raised); font-size: 0.9rem; }
+  input { width: min(260px, 35vw); }
+  select { min-width: 135px; }
+  .result-count { margin: 32px 0 18px; color: var(--ink-faint); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .report-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+  .empty { padding: 60px 0; color: var(--ink-soft); text-align: center; }
+  @media (max-width: 780px) { .track-hero { min-height: 420px; grid-template-columns: 1fr; gap: 40px; padding-block: 65px; } .library-head { align-items: flex-start; flex-direction: column; } .filters { width: 100%; } label:first-child { flex: 1; } input { width: 100%; } }
+  @media (max-width: 650px) { .report-grid { grid-template-columns: 1fr; } .filters { align-items: stretch; flex-direction: column; } select { width: 100%; } .library { padding-block-start: 75px; } }
+</style>

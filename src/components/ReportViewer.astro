@@ -1,0 +1,40 @@
+---
+import { formatDate } from "@/lib/reports";
+const { track, trackLabel, report } = Astro.props;
+---
+
+<main>
+  <section class="viewer-head shell">
+    <div>
+      <p class="eyebrow">{trackLabel} / {report.latest ? "Latest report" : "Archive"}</p>
+      <h1>{report.title}</h1>
+      <p class="report-meta"><time datetime={report.date}>{formatDate(report.date)}</time><span>HTML report</span></p>
+    </div>
+    <div class="viewer-actions">
+      <a class="button secondary" href={`/${track}/`}>返回归档</a>
+      <button class="button" type="button" data-print>
+        导出 PDF
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 19h14" /></svg>
+      </button>
+    </div>
+  </section>
+  <section class="report-frame shell">
+    <iframe src={report.url} title={report.title} sandbox="allow-popups" loading="eager"></iframe>
+  </section>
+</main>
+
+<script>
+  document.querySelector("[data-print]")?.addEventListener("click", () => window.print());
+</script>
+
+<style>
+  .viewer-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; padding-block: 70px 36px; }
+  h1 { margin: 0; max-width: 18ch; font-family: var(--serif); font-size: clamp(2.3rem, 5vw, 4.8rem); font-weight: 500; letter-spacing: -0.04em; line-height: 1; text-wrap: balance; }
+  .report-meta { display: flex; gap: 18px; margin: 20px 0 0; color: var(--ink-faint); font-size: 0.76rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  .report-meta time { font-variant-numeric: tabular-nums; }
+  .viewer-actions { display: flex; gap: 12px; flex-shrink: 0; }
+  .report-frame { padding: 10px; border-radius: 22px; background: var(--paper-raised); box-shadow: var(--shadow-card); }
+  iframe { display: block; width: 100%; min-height: 78vh; border: 0; border-radius: 12px; background: white; }
+  @media (max-width: 760px) { .viewer-head { align-items: flex-start; flex-direction: column; padding-block: 48px 28px; } .viewer-actions { width: 100%; } .viewer-actions .button { flex: 1; } .report-frame { width: 100%; padding: 0; border-radius: 0; box-shadow: none; } iframe { border-radius: 0; min-height: 75vh; } }
+  @media print { .viewer-head, :global(header), :global(footer) { display: none !important; } .report-frame { width: 100%; padding: 0; box-shadow: none; } iframe { min-height: 100vh; } }
+</style>

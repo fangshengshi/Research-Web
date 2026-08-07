@@ -1,0 +1,16 @@
+<footer>
+  <div class="shell footer-inner">
+    <p><b>Research Intelligence Portal</b><span>Private research, publicly presented.</span></p>
+    <p class="meta">AI4S · BCI <span aria-hidden="true">/</span> Updated automatically</p>
+  </div>
+</footer>
+
+<style>
+  footer { margin-top: 110px; border-top: 1px solid var(--rule); }
+  .footer-inner { min-height: 150px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+  p { margin: 0; }
+  b { display: block; font-family: var(--serif); font-size: 1.03rem; font-weight: 600; }
+  p span { color: var(--ink-faint); font-size: 0.78rem; }
+  .meta { display: flex; gap: 10px; color: var(--ink-soft); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  @media (max-width: 620px) { .footer-inner { min-height: 170px; align-items: flex-start; flex-direction: column; justify-content: center; } }
+</style>

@@ -1,0 +1,41 @@
+---
+import { formatDate } from "@/lib/reports";
+const { track, label, report, featured = false } = Astro.props;
+---
+
+<article class:list={["research-card", { featured }]} data-report-card data-title={report.title.toLowerCase()} data-date={report.date} data-tags={report.tags.join(" ").toLowerCase()}>
+  <div class="card-top">
+    <p class="track"><span aria-hidden="true"></span>{label}</p>
+    <time datetime={report.date}>{formatDate(report.date)}</time>
+  </div>
+  <div class="card-body">
+    <p class="card-kicker">Weekly intelligence</p>
+    <h3>{report.title}</h3>
+    <div class="tags" aria-label="标签">
+      {report.tags.slice(0, 3).map((tag: string) => <span>{tag}</span>)}
+    </div>
+  </div>
+  <a class="card-link" href={report.latest ? `/${track}/latest/` : `/${track}/archive/${report.slug}/`} aria-label={`阅读 ${report.title}`}>
+    <span>阅读报告</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+  </a>
+</article>
+
+<style>
+  .research-card { min-height: 390px; display: flex; flex-direction: column; padding: 26px; border-radius: 16px; background: var(--paper-raised); box-shadow: var(--shadow-card); transition-property: transform, box-shadow; transition-duration: 180ms; transition-timing-function: ease-out; }
+  .research-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card-hover); }
+  .featured { min-height: 430px; }
+  .card-top { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+  .track { display: flex; align-items: center; gap: 9px; margin: 0; color: var(--ink-soft); font-size: 0.71rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; }
+  .track span { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px var(--teal-wash); }
+  time { color: var(--ink-faint); font-size: 0.72rem; font-variant-numeric: tabular-nums; }
+  .card-body { margin-block: auto; padding-block: 48px 36px; }
+  .card-kicker { margin: 0 0 12px; color: var(--teal-dark); font-size: 0.69rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  h3 { margin: 0; max-width: 14ch; font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3.1rem); font-weight: 500; letter-spacing: -0.035em; line-height: 1.02; text-wrap: balance; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 25px; }
+  .tags span { padding: 5px 9px; border: 1px solid var(--rule); border-radius: 6px; color: var(--ink-soft); font-size: 0.68rem; white-space: nowrap; }
+  .card-link { display: flex; min-height: 44px; align-items: center; justify-content: space-between; border-top: 1px solid var(--rule); padding-top: 18px; color: var(--ink); font-size: 0.85rem; font-weight: 650; text-decoration: none; }
+  .card-link svg { width: 19px; height: 19px; stroke-width: 1.5; transition-property: transform; transition-duration: 150ms; }
+  .card-link:hover svg { transform: translateX(3px); }
+  @media (max-width: 620px) { .research-card, .featured { min-height: 360px; padding: 22px; } .card-body { padding-block: 38px 30px; } }
+</style>

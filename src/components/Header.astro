@@ -1,0 +1,50 @@
+---
+const { current = "" } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="shell nav-shell">
+    <a class="brand" href="/" aria-label="Research Intelligence Portal 首页">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span><b>Research</b><small>Intelligence Portal</small></span>
+    </a>
+    <nav aria-label="主导航">
+      <a class:list={["nav-link", { active: current === "ai4s" }]} href="/ai4s/">AI4S</a>
+      <a class:list={["nav-link", { active: current === "bci" }]} href="/bci/">BCI</a>
+      <a class="nav-link" href="/#archive">归档</a>
+      <a class="nav-link" href="/#directions">研究方向</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header { position: relative; z-index: 20; border-bottom: 1px solid var(--rule); background: color-mix(in oklch, var(--paper) 94%, transparent); }
+  .nav-shell { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+  .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; }
+  .brand-mark { position: relative; width: 27px; height: 27px; display: inline-block; }
+  .brand-mark i { position: absolute; width: 8px; height: 8px; border: 1.5px solid var(--teal-dark); border-radius: 50%; }
+  .brand-mark i:nth-child(1) { inset: 2px auto auto 9px; }
+  .brand-mark i:nth-child(2) { inset: 15px auto auto 2px; }
+  .brand-mark i:nth-child(3) { inset: 15px 2px auto auto; }
+  .brand-mark::before, .brand-mark::after { content: ""; position: absolute; height: 1.5px; width: 13px; top: 13px; background: var(--teal-dark); transform-origin: center; }
+  .brand-mark::before { left: 3px; transform: rotate(-57deg); }
+  .brand-mark::after { right: 3px; transform: rotate(57deg); }
+  .brand b, .brand small { display: block; line-height: 1.1; }
+  .brand b { font-family: var(--serif); font-size: 1.06rem; font-weight: 600; letter-spacing: -0.02em; }
+  .brand small { margin-top: 3px; color: var(--ink-faint); font-size: 0.66rem; font-weight: 650; letter-spacing: 0.11em; text-transform: uppercase; }
+  nav { display: flex; align-items: center; gap: 6px; }
+  .nav-link { min-height: 42px; display: inline-flex; align-items: center; padding-inline: 13px; border-radius: 8px; color: var(--ink-soft); font-size: 0.86rem; font-weight: 600; text-decoration: none; transition-property: color, background-color; transition-duration: 150ms; }
+  .nav-link:hover, .nav-link.active { color: var(--ink); background: var(--teal-wash); }
+  @media (max-width: 700px) {
+    .nav-shell { min-height: 70px; }
+    nav .nav-link:nth-last-child(-n+2) { display: none; }
+    .brand small { display: none; }
+  }
+  @media (max-width: 420px) {
+    .nav-shell { gap: 12px; }
+    .brand { gap: 8px; }
+    .brand-mark { width: 24px; height: 24px; }
+    nav { gap: 0; }
+    .nav-link { padding-inline: 9px; }
+  }
+</style>
