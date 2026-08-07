@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T00:00:00.000Z",
+  "generatedAt": "2026-08-07T09:29:17.201Z",
   "tracks": {
     "ai4s": {
       "label": "AI for Science",
@@ -8,12 +8,12 @@
       "direction": "计算生物学 · AI 药物研发 · 科研基础设施",
       "reports": [
         {
-          "slug": "2026-08-07-weekly",
-          "title": "AI4S Weekly Intelligence",
+          "slug": "reports-2026-AI4S_Biopharma_Weekly_2026-08-07",
+          "title": "AI4S 生物医药研究更新周报｜2026-08-07",
           "date": "2026-08-07",
-          "url": "/reports/ai4s/2026-08-07-weekly.html",
+          "url": "/reports/ai4s/reports/2026/AI4S_Biopharma_Weekly_2026-08-07.html",
           "format": "html",
-          "tags": ["Foundation Models", "Drug Discovery", "Automation"],
+          "tags": [],
           "latest": true
         }
       ]
@@ -25,12 +25,12 @@
       "direction": "神经工程 · 医疗器械 · 人机交互",
       "reports": [
         {
-          "slug": "2026-08-07-weekly",
-          "title": "BCI Weekly Intelligence",
-          "date": "2026-08-07",
-          "url": "/reports/bci/2026-08-07-weekly.html",
+          "slug": "reports-2026-BCI_Research_Weekly_2026-07-31",
+          "title": "脑机接口研究更新周报｜2026-07-31",
+          "date": "2026-07-31",
+          "url": "/reports/bci/reports/2026/BCI_Research_Weekly_2026-07-31.html",
           "format": "html",
-          "tags": ["Neural Interfaces", "Clinical", "Signal Decoding"],
+          "tags": [],
           "latest": true
         }
       ]
