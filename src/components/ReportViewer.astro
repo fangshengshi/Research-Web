@@ -19,12 +19,20 @@ const { track, trackLabel, report } = Astro.props;
     </div>
   </section>
   <section class="report-frame shell">
-    <iframe src={report.url} title={report.title} sandbox="allow-popups" loading="eager"></iframe>
+    <iframe src={report.url} title={report.title} sandbox="allow-same-origin allow-popups" loading="eager" data-report-frame></iframe>
   </section>
 </main>
 
 <script>
-  document.querySelector("[data-print]")?.addEventListener("click", () => window.print());
+  document.querySelector("[data-print]")?.addEventListener("click", () => {
+    const frame = document.querySelector<HTMLIFrameElement>("[data-report-frame]");
+    if (frame?.contentWindow) {
+      frame.contentWindow.focus();
+      frame.contentWindow.print();
+      return;
+    }
+    window.print();
+  });
 </script>
 
 <style>
