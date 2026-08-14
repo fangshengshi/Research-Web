@@ -33,6 +33,15 @@ function inferDate(file) {
 function slugify(file) { return file.replace(/\.html?$/i, "").replace(/[\\/]+/g, "-").replace(/[^a-zA-Z0-9\u4e00-\u9fff_-]+/g, "-").replace(/^-|-$/g, ""); }
 function publicUrl(track, relative) { return `/reports/${track}/${relative.split(path.sep).map(encodeURIComponent).join("/")}`; }
 
+let previousManifest = null;
+if (await exists(manifestPath)) {
+  try {
+    previousManifest = JSON.parse(await readFile(manifestPath, "utf8"));
+  } catch {
+    previousManifest = null;
+  }
+}
+
 const stageRoot = await mkdtemp(path.join(tmpdir(), "research-web-sync-"));
 const tracks = {};
 try {
@@ -75,8 +84,10 @@ try {
   }
   await rm(outputRoot, { recursive: true, force: true });
   await rename(stageRoot, outputRoot);
-  await writeFile(manifestPath, `${JSON.stringify({ generatedAt: new Date().toISOString(), tracks }, null, 2)}\n`);
-  console.log(`Synced ${Object.values(tracks).reduce((sum, track) => sum + track.reports.length, 0)} reports from ${sourceRoot}`);
+  const tracksChanged = JSON.stringify(previousManifest?.tracks ?? null) !== JSON.stringify(tracks);
+  const generatedAt = tracksChanged ? new Date().toISOString() : (previousManifest?.generatedAt ?? new Date().toISOString());
+  await writeFile(manifestPath, `${JSON.stringify({ generatedAt, tracks }, null, 2)}\n`);
+  console.log(`Synced ${Object.values(tracks).reduce((sum, track) => sum + track.reports.length, 0)} reports from ${sourceRoot}${tracksChanged ? " (changes detected)" : " (no report changes)"}`);
 } catch (error) {
   await rm(stageRoot, { recursive: true, force: true });
   throw error;
