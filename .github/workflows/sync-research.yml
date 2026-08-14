@@ -2,7 +2,21 @@ name: Sync private research
 
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types: [research-updated]
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/sync-research.yml"
+      - "scripts/sync-research.mjs"
   schedule:
+    # AI4S 通常在周五下午完成；14:45 SGT 进行首轮同步。
+    - cron: "45 6 * * 5"
+    # BCI 通常在周五 16:00 后完成；16:45 SGT 再同步一次。
+    - cron: "45 8 * * 5"
+    # 当日兜底，避免报告生成延迟。
+    - cron: "45 10 * * 5"
+    # 周一补漏。
     - cron: "15 6 * * 1"
 
 permissions:
@@ -15,11 +29,14 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout public portal
         uses: actions/checkout@v6
         with:
           path: web
+          ref: main
+          fetch-depth: 0
 
       - name: Checkout private research
         uses: actions/checkout@v6
@@ -27,6 +44,8 @@ jobs:
           repository: fangshengshi/Research
           token: ${{ secrets.RESEARCH_REPO_TOKEN }}
           path: research
+          ref: main
+          fetch-depth: 1
           persist-credentials: false
 
       - name: Set up Node
@@ -51,6 +70,22 @@ jobs:
           git config user.name "research-sync[bot]"
           git config user.email "research-sync[bot]@users.noreply.github.com"
           git add public/reports src/data/reports.json
-          git diff --cached --quiet && exit 0
+
+          if git diff --cached --quiet; then
+            echo "No report changes to publish."
+            exit 0
+          fi
+
           git commit -m "chore: 同步最新研究周报"
-          git push
+
+          for attempt in 1 2 3; do
+            echo "Push attempt ${attempt}/3"
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              exit 0
+            fi
+            git rebase --abort || true
+            sleep $((attempt * 5))
+          done
+
+          echo "Failed to publish after three attempts."
+          exit 1
