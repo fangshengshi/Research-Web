@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-27T08:16:04.646Z",
+  "generatedAt": "2026-08-27T09:02:05.985Z",
   "tracks": {
     "ai4s": {
       "label": "AI for Science",
@@ -76,7 +76,17 @@
       "shortLabel": "BD",
       "description": "跟踪全球生物医药授权、合作和并购，拆解交易条款、买方意图与资产稀缺性。",
       "direction": "授权合作 · 并购交易 · 交易条款",
-      "reports": []
+      "reports": [
+        {
+          "slug": "reports-2026-Global_Biopharma_BD_2026-08-20",
+          "title": "全球生物医药 BD 交易情报｜2026-08-20",
+          "date": "2026-08-20",
+          "url": "/reports/bd-deals/reports/2026/Global_Biopharma_BD_2026-08-20.html",
+          "format": "html",
+          "tags": [],
+          "latest": true
+        }
+      ]
     },
     "clinical-regulatory": {
       "label": "Clinical & Regulatory",
