@@ -28,7 +28,7 @@ const years = [...new Set(data.reports.map((report) => report.date.slice(0, 4)))
       <div class="report-grid" data-report-grid>
         {data.reports.map((report) => <ResearchCard track={track} label={data.shortLabel} report={report} />)}
       </div>
-      <p class="empty" data-empty hidden>没有符合当前条件的报告。</p>
+      <p class="empty" data-empty hidden={data.reports.length > 0}>{data.reports.length ? "没有符合当前条件的报告。" : "首期报告生成后会自动出现在这里。"}</p>
     </section>
   </main>
 </BaseLayout>

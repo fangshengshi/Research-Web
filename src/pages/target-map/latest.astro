@@ -1,0 +1,10 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ReportViewer from "@/components/ReportViewer.astro";
+import { tracks, getLatest } from "@/lib/reports";
+const report = getLatest("target-map");
+---
+<BaseLayout title={`${report?.title ?? "靶点与竞争格局"} | Research Intelligence Portal`} current="target-map">
+  {report ? <ReportViewer track="target-map" trackLabel={tracks["target-map"].shortLabel} report={report} /> : <main class="shell empty-latest"><h1>首期报告尚未生成</h1><p>报告完成并归档后会自动发布到这里。</p><a href="/target-map/">返回栏目</a></main>}
+</BaseLayout>
+<style>.empty-latest{min-height:65vh;padding-block:110px}.empty-latest h1{font-family:var(--serif);font-size:clamp(2.5rem,6vw,5rem);font-weight:500}.empty-latest p{color:var(--ink-soft)}.empty-latest a{color:var(--teal-dark)}</style>

@@ -11,8 +11,10 @@ const { current = "" } = Astro.props;
     <nav aria-label="主导航">
       <a class:list={["nav-link", { active: current === "ai4s" }]} href="/ai4s/">AI4S</a>
       <a class:list={["nav-link", { active: current === "bci" }]} href="/bci/">BCI</a>
+      <a class:list={["nav-link", { active: current === "bd-deals" }]} href="/bd-deals/">BD</a>
+      <a class:list={["nav-link", { active: current === "clinical-regulatory" }]} href="/clinical-regulatory/">临床监管</a>
+      <a class:list={["nav-link", { active: current === "target-map" }]} href="/target-map/">靶点图谱</a>
       <a class="nav-link" href="/#archive">归档</a>
-      <a class="nav-link" href="/#directions">研究方向</a>
     </nav>
   </div>
 </header>
@@ -37,7 +39,7 @@ const { current = "" } = Astro.props;
   .nav-link:hover, .nav-link.active { color: var(--ink); background: var(--teal-wash); }
   @media (max-width: 700px) {
     .nav-shell { min-height: 70px; }
-    nav .nav-link:nth-last-child(-n+2) { display: none; }
+    nav .nav-link:last-child { display: none; }
     .brand small { display: none; }
   }
   @media (max-width: 420px) {
@@ -45,6 +47,7 @@ const { current = "" } = Astro.props;
     .brand { gap: 8px; }
     .brand-mark { width: 24px; height: 24px; }
     nav { gap: 0; }
-    .nav-link { padding-inline: 9px; }
+    nav { max-width: 74vw; overflow-x: auto; }
+    .nav-link { padding-inline: 9px; white-space: nowrap; }
   }
 </style>

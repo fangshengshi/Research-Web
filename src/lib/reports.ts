@@ -1,9 +1,24 @@
 import manifest from "@/data/reports.json";
 
 export type TrackKey = keyof typeof manifest.tracks;
-export type Report = (typeof manifest.tracks)[TrackKey]["reports"][number];
+export type Report = {
+  slug: string;
+  title: string;
+  date: string;
+  url: string;
+  format: string;
+  tags: string[];
+  latest: boolean;
+};
+export type Track = {
+  label: string;
+  shortLabel: string;
+  description: string;
+  direction: string;
+  reports: Report[];
+};
 
-export const tracks = manifest.tracks;
+export const tracks = manifest.tracks as Record<TrackKey, Track>;
 export const generatedAt = manifest.generatedAt;
 
 export function getTrack(key: string) {

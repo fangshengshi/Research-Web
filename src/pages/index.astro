@@ -1,9 +1,15 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ResearchCard from "@/components/ResearchCard.astro";
-import { tracks, getLatest, generatedAt } from "@/lib/reports";
-const ai4s = getLatest("ai4s");
-const bci = getLatest("bci");
+import { tracks, getLatest, generatedAt, type TrackKey } from "@/lib/reports";
+const trackOrder = ["ai4s", "bci", "bd-deals", "clinical-regulatory", "target-map"] as const satisfies readonly TrackKey[];
+const directionTitles: Record<TrackKey, string> = {
+  ai4s: "科学发现的计算化",
+  bci: "神经系统的工程化接口",
+  "bd-deals": "交易背后的真实需求",
+  "clinical-regulatory": "临床结果与监管决定",
+  "target-map": "靶点与管线的竞争位置",
+};
 ---
 
 <BaseLayout>
@@ -13,15 +19,14 @@ const bci = getLatest("bci");
         <div class="hero-copy">
           <p class="eyebrow">Research intelligence / Life science frontier</p>
           <h1 class="display">Ideas before they become consensus.</h1>
-          <p class="hero-intro">面向投资决策的前沿研究情报。持续追踪 AI for Science 与脑机接口，从技术信号中识别产业变化。</p>
+          <p class="hero-intro">面向投资决策的生命科学研究情报。持续追踪前沿技术、交易、临床监管和竞争格局，把事实、判断与未知问题讲清楚。</p>
         </div>
         <div class="hero-index" aria-label="研究覆盖范围">
           <p>Coverage</p>
-          <strong>02</strong>
+          <strong>05</strong>
           <span>Research verticals</span>
           <dl>
-            <div><dt>01</dt><dd>AI for Science</dd></div>
-            <div><dt>02</dt><dd>Brain–Computer Interface</dd></div>
+            {trackOrder.map((key, index) => <div><dt>{String(index + 1).padStart(2, "0")}</dt><dd>{tracks[key].label}</dd></div>)}
           </dl>
         </div>
       </div>
@@ -33,8 +38,10 @@ const bci = getLatest("bci");
         <p>每周更新的核心信号、产业进展与投资启示。</p>
       </div>
       <div class="latest-grid">
-        {ai4s && <ResearchCard track="ai4s" label={tracks.ai4s.shortLabel} report={ai4s} featured />}
-        {bci && <ResearchCard track="bci" label={tracks.bci.shortLabel} report={bci} featured />}
+        {trackOrder.map((key) => {
+          const report = getLatest(key);
+          return report && <ResearchCard track={key} label={tracks[key].shortLabel} report={report} featured />;
+        })}
       </div>
     </section>
 
@@ -45,8 +52,7 @@ const bci = getLatest("bci");
         <p>按研究方向进入完整周报序列。站内索引支持标题、标签与日期筛选，原始 HTML 和图片资源保持原样展示。</p>
       </div>
       <div class="archive-links">
-        <a href="/ai4s/"><span><small>01</small><b>AI for Science</b></span><em>{tracks.ai4s.reports.length.toString().padStart(2, "0")} reports</em></a>
-        <a href="/bci/"><span><small>02</small><b>Brain–Computer Interface</b></span><em>{tracks.bci.reports.length.toString().padStart(2, "0")} reports</em></a>
+        {trackOrder.map((key, index) => <a href={`/${key}/`}><span><small>{String(index + 1).padStart(2, "0")}</small><b>{tracks[key].label}</b></span><em>{tracks[key].reports.length ? `${tracks[key].reports.length.toString().padStart(2, "0")} reports` : "即将更新"}</em></a>)}
       </div>
     </section>
 
@@ -54,8 +60,7 @@ const bci = getLatest("bci");
       <div class="shell directions-inner">
         <div><p class="eyebrow">Research thesis</p><h2 class="section-title">研究方向</h2></div>
         <div class="direction-list">
-          <article><span>AI4S</span><h3>科学发现的计算化</h3><p>{tracks.ai4s.description}</p><small>{tracks.ai4s.direction}</small></article>
-          <article><span>BCI</span><h3>神经系统的工程化接口</h3><p>{tracks.bci.description}</p><small>{tracks.bci.direction}</small></article>
+          {trackOrder.map((key) => <article><span>{tracks[key].shortLabel}</span><h3>{directionTitles[key]}</h3><p>{tracks[key].description}</p><small>{tracks[key].direction}</small></article>)}
         </div>
         <p class="sync-note">Index refreshed <time datetime={generatedAt}>{new Date(generatedAt).toLocaleDateString("zh-CN")}</time></p>
       </div>

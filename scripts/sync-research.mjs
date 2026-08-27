@@ -11,6 +11,9 @@ const publishableExtensions = new Set([".html", ".htm", ".css", ".png", ".jpg", 
 const trackConfig = {
   ai4s: { label: "AI for Science", shortLabel: "AI4S", description: "追踪人工智能驱动的药物发现、生命科学基础模型与实验自动化。", direction: "计算生物学 · AI 药物研发 · 科研基础设施", candidates: ["ai4s", "AI4S"] },
   bci: { label: "Brain–Computer Interface", shortLabel: "BCI", description: "覆盖侵入式与非侵入式脑机接口、神经信号解码和临床转化。", direction: "神经工程 · 医疗器械 · 人机交互", candidates: ["bci", "BCI"] },
+  "bd-deals": { label: "Biopharma BD Deals", shortLabel: "BD", description: "跟踪全球生物医药授权、合作和并购，拆解交易条款、买方意图与资产稀缺性。", direction: "授权合作 · 并购交易 · 交易条款", candidates: ["bd-deals"] },
+  "clinical-regulatory": { label: "Clinical & Regulatory", shortLabel: "临床监管", description: "跟踪关键临床结果和监管决定，分清已经确认的事实、数据所能支持的判断与仍待披露的问题。", direction: "临床试验 · 申报审评 · 药品安全", candidates: ["clinical-regulatory"] },
+  "target-map": { label: "Target & Competition Map", shortLabel: "靶点图谱", description: "跟踪重要靶点、技术路线和在研项目，判断竞争门槛究竟发生了什么变化。", direction: "靶点生物学 · 管线地图 · 竞争格局", candidates: ["target-map"] },
 };
 
 async function exists(target) { try { await stat(target); return true; } catch { return false; } }
@@ -47,9 +50,12 @@ const tracks = {};
 try {
   for (const [key, config] of Object.entries(trackConfig)) {
     const sourceDir = (await Promise.all(config.candidates.map(async (name) => [path.join(sourceRoot, name), await exists(path.join(sourceRoot, name))]))).find(([, found]) => found)?.[0];
-    if (!sourceDir) throw new Error(`Missing source directory for ${key}. Expected one of: ${config.candidates.join(", ")}`);
     const targetDir = path.join(stageRoot, key);
     await mkdir(targetDir, { recursive: true });
+    if (!sourceDir) {
+      tracks[key] = { label: config.label, shortLabel: config.shortLabel, description: config.description, direction: config.direction, reports: [] };
+      continue;
+    }
     const sourceFiles = await walk(sourceDir);
     const publishableFiles = sourceFiles.filter((file) => publishableExtensions.has(path.extname(file).toLowerCase()) && !file.split(path.sep).some((part) => part.startsWith(".")));
     for (const file of publishableFiles) {
@@ -59,7 +65,10 @@ try {
     }
     const files = await walk(targetDir);
     const htmlFiles = files.filter((file) => /\.html?$/i.test(file));
-    if (!htmlFiles.length) throw new Error(`No HTML reports found in ${sourceDir}`);
+    if (!htmlFiles.length) {
+      tracks[key] = { label: config.label, shortLabel: config.shortLabel, description: config.description, direction: config.direction, reports: [] };
+      continue;
+    }
     const latestFile = htmlFiles.find((file) => path.basename(file).toLowerCase() === "latest.html");
     const historicalFiles = htmlFiles.filter((file) => file !== latestFile);
     const reports = [];

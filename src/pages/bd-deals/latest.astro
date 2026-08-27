@@ -1,0 +1,10 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ReportViewer from "@/components/ReportViewer.astro";
+import { tracks, getLatest } from "@/lib/reports";
+const report = getLatest("bd-deals");
+---
+<BaseLayout title={`${report?.title ?? "BD 交易情报"} | Research Intelligence Portal`} current="bd-deals">
+  {report ? <ReportViewer track="bd-deals" trackLabel={tracks["bd-deals"].shortLabel} report={report} /> : <main class="shell empty-latest"><h1>首期报告尚未生成</h1><p>报告完成并归档后会自动发布到这里。</p><a href="/bd-deals/">返回栏目</a></main>}
+</BaseLayout>
+<style>.empty-latest{min-height:65vh;padding-block:110px}.empty-latest h1{font-family:var(--serif);font-size:clamp(2.5rem,6vw,5rem);font-weight:500}.empty-latest p{color:var(--ink-soft)}.empty-latest a{color:var(--teal-dark)}</style>

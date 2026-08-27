@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T09:18:42.539Z",
+  "generatedAt": "2026-08-27T08:16:04.646Z",
   "tracks": {
     "ai4s": {
       "label": "AI for Science",
@@ -70,6 +70,27 @@
           "latest": false
         }
       ]
+    },
+    "bd-deals": {
+      "label": "Biopharma BD Deals",
+      "shortLabel": "BD",
+      "description": "跟踪全球生物医药授权、合作和并购，拆解交易条款、买方意图与资产稀缺性。",
+      "direction": "授权合作 · 并购交易 · 交易条款",
+      "reports": []
+    },
+    "clinical-regulatory": {
+      "label": "Clinical & Regulatory",
+      "shortLabel": "临床监管",
+      "description": "跟踪关键临床结果和监管决定，分清已经确认的事实、数据所能支持的判断与仍待披露的问题。",
+      "direction": "临床试验 · 申报审评 · 药品安全",
+      "reports": []
+    },
+    "target-map": {
+      "label": "Target & Competition Map",
+      "shortLabel": "靶点图谱",
+      "description": "跟踪重要靶点、技术路线和在研项目，判断竞争门槛究竟发生了什么变化。",
+      "direction": "靶点生物学 · 管线地图 · 竞争格局",
+      "reports": []
     }
   }
 }

@@ -10,14 +10,18 @@ on:
       - ".github/workflows/sync-research.yml"
       - "scripts/sync-research.mjs"
   schedule:
+    # 周一、周四、周六的新任务完成后分三轮同步；无新报告时不会产生提交。
+    - cron: "45 6 * * 1,4,6"
+    - cron: "45 8 * * 1,4,6"
+    - cron: "45 10 * * 1,4,6"
     # AI4S 通常在周五下午完成；14:45 SGT 进行首轮同步。
     - cron: "45 6 * * 5"
     # BCI 通常在周五 16:00 后完成；16:45 SGT 再同步一次。
     - cron: "45 8 * * 5"
     # 当日兜底，避免报告生成延迟。
     - cron: "45 10 * * 5"
-    # 周一补漏。
-    - cron: "15 6 * * 1"
+    # 每周日补漏。
+    - cron: "15 6 * * 0"
 
 permissions:
   contents: write
