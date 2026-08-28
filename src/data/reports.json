@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-28T06:29:30.000Z",
+  "generatedAt": "2026-08-28T19:00:06.367Z",
   "tracks": {
     "ai4s": {
       "label": "AI for Science",
@@ -52,13 +52,22 @@
       "direction": "神经工程 · 医疗器械 · 人机交互",
       "reports": [
         {
+          "slug": "reports-2026-BCI_Research_Weekly_2026-08-28",
+          "title": "脑机接口产业与投资观察周报｜2026-08-28",
+          "date": "2026-08-28",
+          "url": "/reports/bci/reports/2026/BCI_Research_Weekly_2026-08-28.html",
+          "format": "html",
+          "tags": [],
+          "latest": true
+        },
+        {
           "slug": "reports-2026-BCI_Research_Weekly_2026-08-21",
           "title": "脑机接口产业与投资观察周报｜2026-08-21",
           "date": "2026-08-21",
           "url": "/reports/bci/reports/2026/BCI_Research_Weekly_2026-08-21.html",
           "format": "html",
           "tags": [],
-          "latest": true
+          "latest": false
         },
         {
           "slug": "reports-2026-BCI_Research_Weekly_2026-08-14",
