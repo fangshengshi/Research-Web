@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<defs>
+<style>
+text{font-family:"Noto Sans CJK SC","Microsoft YaHei","PingFang SC",sans-serif;fill:#172033}
+.title{font-size:44px;font-weight:700;fill:#fff}.sub{font-size:20px;fill:#dbe7f1}.head{font-size:19px;font-weight:700;fill:#48566a}
+.name{font-size:24px;font-weight:700}.fact{font-size:18px}.judge{font-size:18px;font-weight:600}.heat{font-size:16px;fill:#46566b}.foot{font-size:16px;fill:#dbe7f1}
+</style>
+<filter id="shadow" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="3" stdDeviation="8" flood-color="#0b1624" flood-opacity=".12"/></filter>
+</defs>
+<rect width="1920" height="1080" fill="#f3f6f9"/>
+<rect width="1920" height="165" fill="#112e49"/>
+<text x="72" y="73" class="title">全球生物医药靶点与竞争格局更新</text>
+<text x="74" y="116" class="sub">Target &amp; Competition Map · 2026-08-29</text>
+<text x="1844" y="71" text-anchor="end" class="sub">数据截止：2026-08-29 07:58 SGT</text>
+<text x="1844" y="108" text-anchor="end" class="sub">主窗口：2026-08-23—2026-08-29</text>
+
+<rect x="54" y="194" width="1812" height="708" rx="20" fill="#fff" filter="url(#shadow)"/>
+<text x="84" y="240" class="head">方向</text>
+<text x="470" y="240" class="head">本周新增事实</text>
+<text x="1140" y="240" class="head">当前竞争判断</text>
+<text x="1642" y="240" class="head">关注度*</text>
+<line x1="78" y1="260" x2="1840" y2="260" stroke="#d8e0e8" stroke-width="2"/>
+
+<!-- row1 -->
+<text x="84" y="309" class="name">广谱 RAS｜胰腺癌</text>
+<text x="470" y="302" class="fact">daraxonrasib 获 FDA 批准；</text><text x="470" y="332" class="fact">OS 13.2 vs 6.7 月，HR 0.40</text>
+<text x="1140" y="302" class="judge">Leader：daraxonrasib</text><text x="1140" y="332" class="fact">后续项目需给出生存或治疗窗优势</text>
+<text x="1642" y="302" class="heat">科 高｜药 高</text><text x="1642" y="332" class="heat">资 中｜竞 中</text>
+<line x1="78" y1="365" x2="1840" y2="365" stroke="#e5eaf0"/>
+
+<!-- row2 -->
+<text x="84" y="414" class="name">心肌肌球蛋白｜nHCM</text>
+<text x="470" y="407" class="fact">aficamten III 期达到 KCCQ 与 pVO2</text><text x="470" y="437" class="fact">LVEF&lt;50%：10.5% vs 0.8%</text>
+<text x="1140" y="407" class="judge">Leader：aficamten</text><text x="1140" y="437" class="fact">疗效成立；监测与心衰风险影响采用</text>
+<text x="1642" y="407" class="heat">科 高｜药 中</text><text x="1642" y="437" class="heat">资 中｜竞 低</text>
+<line x1="78" y1="470" x2="1840" y2="470" stroke="#e5eaf0"/>
+
+<!-- row3 -->
+<text x="84" y="519" class="name">HER2+ 一线 GEA</text>
+<text x="470" y="512" class="fact">zanidatamab 两套方案获批；三联</text><text x="470" y="542" class="fact">OS 26.4 vs 19.2 月，HR 0.72</text>
+<text x="1140" y="512" class="judge">新增一线获批选择</text><text x="1140" y="542" class="fact">CPS≥1 与 KEYNOTE-811 直接竞争</text>
+<text x="1642" y="512" class="heat">科 高｜药 高</text><text x="1642" y="542" class="heat">资 中｜竞 高</text>
+<line x1="78" y1="575" x2="1840" y2="575" stroke="#e5eaf0"/>
+
+<!-- row4 -->
+<text x="84" y="624" class="name">PD-1×VEGF｜胆道癌</text>
+<text x="470" y="617" class="fact">ivonescimab+Gem/Cis III 期</text><text x="470" y="647" class="fact">相对 durvalumab 方案达到 OS/PFS/ORR</text>
+<text x="1140" y="617" class="judge">同类开发进度领先</text><text x="1140" y="647" class="fact">效应量与全球可迁移性仍待完整数据</text>
+<text x="1642" y="617" class="heat">科 高｜药 高</text><text x="1642" y="647" class="heat">资 中｜竞 中</text>
+<line x1="78" y1="680" x2="1840" y2="680" stroke="#e5eaf0"/>
+
+<!-- row5 -->
+<text x="84" y="729" class="name">Hepcidin 模拟物｜PV</text>
+<text x="470" y="722" class="fact">rusfertide 成为首个获批同类药；</text><text x="470" y="752" class="fact">无需放血 76.9% vs 32.9%</text>
+<text x="1140" y="722" class="judge">Leader：rusfertide</text><text x="1140" y="752" class="fact">采用取决于长期症状、贫血与依从性</text>
+<text x="1642" y="722" class="heat">科 高｜药 中</text><text x="1642" y="752" class="heat">资 中｜竞 低</text>
+
+<rect x="78" y="798" width="1762" height="78" rx="12" fill="#f1f5f9"/>
+<text x="100" y="827" class="head">关键退出</text><text x="246" y="827" class="fact">BNT122-01 终止：ctDNA+ 术后 CRC 辅助单药方案退出；PDAC 联合研究继续</text>
+<text x="100" y="858" class="head">下一节点</text><text x="246" y="858" class="fact">2026-09-15 WCLC：全球 HARMONi 更新 OS</text>
+
+<rect x="0" y="935" width="1920" height="145" fill="#112e49"/>
+<text x="72" y="977" class="foot">* 科=Scientific Heat；药=Pharma Heat；资=Capital Heat；竞=Clinical/Commercial Crowding。</text>
+<text x="72" y="1011" class="foot">图中信息来自本期报告，完整证据及来源见HTML正文；本图不替代原始证据。</text>
+<text x="72" y="1045" class="foot">本周没有新增融资、授权或并购，因此 Capital Heat 未因临床或监管事件单独调高。</text>
+</svg>

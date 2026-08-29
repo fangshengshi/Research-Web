@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-28T19:00:06.367Z",
+  "generatedAt": "2026-08-29T12:49:55.126Z",
   "tracks": {
     "ai4s": {
       "label": "AI for Science",
@@ -118,7 +118,17 @@
       "shortLabel": "靶点图谱",
       "description": "跟踪重要靶点、技术路线和在研项目，判断竞争门槛究竟发生了什么变化。",
       "direction": "靶点生物学 · 管线地图 · 竞争格局",
-      "reports": []
+      "reports": [
+        {
+          "slug": "reports-2026-Global_Target_Competition_Map_2026-08-29",
+          "title": "全球生物医药靶点与竞争格局更新｜2026-08-29",
+          "date": "2026-08-29",
+          "url": "/reports/target-map/reports/2026/Global_Target_Competition_Map_2026-08-29.html",
+          "format": "html",
+          "tags": [],
+          "latest": true
+        }
+      ]
     }
   }
 }
