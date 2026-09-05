@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<defs>
+<style>
+text{font-family:"Noto Sans CJK SC","Source Han Sans SC","Microsoft YaHei","PingFang SC",sans-serif;fill:#142033}
+.t{font-size:43px;font-weight:700;fill:#fff} .s{font-size:20px;fill:#d9e5ef}
+.h{font-size:18px;font-weight:700;fill:#536174} .n{font-size:22px;font-weight:700}
+.f{font-size:17px} .j{font-size:17px;font-weight:600} .heat{font-size:15px;fill:#48566a}
+.foot{font-size:15px;fill:#d8e4ee} .muted{font-size:15px;fill:#697689}
+</style>
+<filter id="sh"><feDropShadow dx="0" dy="3" stdDeviation="7" flood-color="#0c1724" flood-opacity=".12"/></filter>
+</defs>
+<rect width="1920" height="1080" fill="#f3f6f9"/>
+<rect width="1920" height="160" fill="#12314d"/>
+<text x="70" y="70" class="t">全球生物医药靶点与竞争格局更新</text>
+<text x="72" y="113" class="s">Target &amp; Competition Map · 数据截止 2026-09-05 08:59 SGT</text>
+<text x="1848" y="72" text-anchor="end" class="s">研究窗口：2026-08-29 07:58—2026-09-05 08:59</text>
+<text x="1848" y="111" text-anchor="end" class="s">本期：5 个竞争判断发生实质变化</text>
+
+<rect x="52" y="188" width="1816" height="720" rx="18" fill="#fff" filter="url(#sh)"/>
+<text x="80" y="230" class="h">方向</text><text x="370" y="230" class="h">本周新增事实</text><text x="1035" y="230" class="h">当前判断</text><text x="1510" y="228" style="font-family:'Noto Sans CJK SC',sans-serif;font-size:14px;font-weight:700;fill:#536174">Scientific / Pharma / Capital / Crowding</text>
+<line x1="76" y1="248" x2="1840" y2="248" stroke="#d8e0e8" stroke-width="2"/>
+
+<!-- 1 -->
+<text x="80" y="301" class="n">Lp(a) 降低</text><text x="80" y="329" class="muted">ASCVD 心血管结局</text>
+<text x="370" y="290" class="f">pelacarsen：Lp(a)HORIZON III期未达 MACE 主终点</text>
+<text x="370" y="319" class="f">8,323例；Lp(a) 显著下降，但未转化为心血管风险下降</text>
+<text x="1035" y="290" class="j">pelacarsen 失去领先位置；项目是否终止尚未公布</text>
+<text x="1035" y="319" class="f">Challenger：olpasiran、lepodisiran；Watch：muvalaplin</text>
+<text x="1600" y="305" class="heat">高 / 高 / 高 / 高</text>
+<line x1="76" y1="354" x2="1840" y2="354" stroke="#e4e9ef"/>
+
+<!-- 2 -->
+<text x="80" y="408" class="n">PD-1×VEGF</text><text x="80" y="436" class="muted">1L PD-L1+ NSCLC</text>
+<text x="370" y="397" class="f">HARMONi-2：ivonescimab 对 pembrolizumab 的 OS 达显著改善</text>
+<text x="370" y="426" class="f">此前 PFS 11.14 vs 5.82 月，HR 0.51；OS 数值尚未披露</text>
+<text x="1035" y="397" class="j">Leader：ivonescimab；同适应症随机证据进一步拉开</text>
+<text x="1035" y="426" class="f">pumitamig+化疗属相邻参照，方案不同，不作直接排序</text>
+<text x="1600" y="412" class="heat">高 / 高 / 高 / 高*</text>
+<line x1="76" y1="461" x2="1840" y2="461" stroke="#e4e9ef"/>
+
+<!-- 3 -->
+<text x="80" y="515" class="n">BTK 抑制剂</text><text x="80" y="543" class="muted">复发型多发性硬化</text>
+<text x="370" y="504" class="f">remibrutinib：REMODEL-1/-2 均达 ARR 主终点</text>
+<text x="370" y="533" class="f">关键次要终点均优于 teriflunomide；暂未见肝安全信号</text>
+<text x="1035" y="504" class="j">Leader：fenebrutinib 不变；remibrutinib 升为 Challenger</text>
+<text x="1035" y="533" class="f">BTK 在 RMS 的有效性从单一分子证据变为两项后期项目支持</text>
+<text x="1600" y="519" class="heat">高 / 高 / 中高 / 中</text>
+<line x1="76" y1="568" x2="1840" y2="568" stroke="#e4e9ef"/>
+
+<!-- 4 -->
+<text x="80" y="622" class="n">CD19 CAR-T</text><text x="80" y="650" class="muted">自身免疫病</text>
+<text x="370" y="611" class="f">本周披露：rap-cel 的8项免疫/神经试验已于8/24暂停</text>
+<text x="370" y="640" class="f">3例 IEC-HS 相关死亡；BMS zola-cel 自身免疫项目亦已暂停</text>
+<text x="1035" y="611" class="j">rap-cel、zola-cel：Paused；当前无公开证据支持新 Leader</text>
+<text x="1035" y="640" class="f">安全性、扩增动力学和监测方案进入核心竞争指标</text>
+<text x="1600" y="626" class="heat">高 / 高 / 高 / 中高</text>
+<line x1="76" y1="675" x2="1840" y2="675" stroke="#e4e9ef"/>
+
+<!-- 5 -->
+<text x="80" y="729" class="n">ESR1 / ctDNA</text><text x="80" y="757" class="muted">HR+/HER2− 晚期乳腺癌</text>
+<text x="370" y="718" class="f">9/4 FDA 加速批准 camizestrant + CDK4/6 抑制剂</text>
+<text x="370" y="747" class="f">首次按影像进展前 ctDNA 检出的 ESR1 耐药突变切换治疗</text>
+<text x="1035" y="718" class="j">Leader：camizestrant（这一用药时点暂无同等获批方案）</text>
+<text x="1035" y="747" class="f">PFS 16.0 vs 9.2 月；临床获益仍需确证试验确认</text>
+<text x="1600" y="733" class="heat">高 / 高 / 中高 / 低**</text>
+
+<rect x="76" y="795" width="1764" height="82" rx="12" fill="#eef3f7"/>
+<text x="98" y="826" class="j">Who Entered / Advanced / Paused / Failed</text>
+<text x="98" y="855" class="f">Entered：camizestrant（美国）｜Advanced：ivonescimab、remibrutinib｜Paused：rap-cel、zola-cel｜Failed pivotal endpoint：pelacarsen</text>
+<text x="76" y="932" class="muted">* PD-1×VEGF 的“高拥挤”指整体开发；HARMONi-2 的无化疗、PD-L1≥1%单药场景竞争密度较低。 ** ESR1 精确到“影像进展前切换”场景拥挤度低，广义口服ER降解剂竞争较高。</text>
+
+<rect x="52" y="958" width="1816" height="82" rx="15" fill="#12314d"/>
+<text x="78" y="989" class="foot">下一项最可能改变竞争地图的催化剂：2026-09-15 WCLC｜全球 HARMONi 更新 OS（EGFRm NSCLC，post-TKI）</text>
+<text x="78" y="1017" class="foot">图中信息来自本期报告，完整证据及来源见HTML正文；本图不替代原始证据。</text>
+</svg>
