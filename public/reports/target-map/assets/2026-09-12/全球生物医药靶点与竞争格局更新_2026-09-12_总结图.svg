@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<defs><style>
+text{font-family:"Noto Sans CJK SC","Microsoft YaHei","PingFang SC",sans-serif;fill:#172033}
+.title{font-size:42px;font-weight:700;fill:#fff}.sub{font-size:20px;fill:#dce7f1}.h{font-size:18px;font-weight:700;fill:#56657a}.n{font-size:22px;font-weight:700}.b{font-size:17px}.s{font-size:15px;fill:#59677a}.tag{font-size:15px;font-weight:700}.white{fill:#fff}.foot{font-size:16px;fill:#dce7f1}
+</style><filter id="sh"><feDropShadow dx="0" dy="3" stdDeviation="7" flood-opacity=".11"/></filter></defs>
+<rect width="1920" height="1080" fill="#f3f6f9"/><rect width="1920" height="152" fill="#12334f"/>
+<text x="64" y="66" class="title">全球生物医药靶点与竞争格局更新</text>
+<text x="64" y="108" class="sub">Target &amp; Competition Map｜数据截止 2026-09-12 09:00 SGT｜主窗口 2026-09-05 08:59—2026-09-12 09:00</text>
+<rect x="48" y="178" width="1824" height="730" rx="20" fill="#fff" filter="url(#sh)"/>
+<text x="76" y="221" class="h">方向</text><text x="388" y="221" class="h">本周新增事实</text><text x="1030" y="221" class="h">当前竞争位置</text><text x="1545" y="221" class="h">热度 / 拥挤度</text>
+<line x1="72" y1="241" x2="1848" y2="241" stroke="#d9e0e7" stroke-width="2"/>
+
+<text x="76" y="290" class="n">SMA：肌肉端加用治疗</text><text x="388" y="285" class="b">9/11 FDA 批准 ISEMBYLD（apitegromab）</text><text x="388" y="314" class="s">≥2岁且正在接受 SMN2 靶向治疗；首个直接针对肌肉丢失的 SMA 药物</text><text x="1030" y="285" class="b">Leader：ISEMBYLD；同治疗角色暂无已批直接竞对</text><text x="1030" y="314" class="s">既有 SMN2 药物是联合基础治疗，不是同位替代</text><text x="1545" y="285" class="tag">Sci 高｜Pharma 高｜Capital 高</text><text x="1545" y="314" class="s">Crowding 低｜关注支付与长期加用率</text>
+<line x1="72" y1="345" x2="1848" y2="345" stroke="#e6ebf0"/>
+
+<text x="76" y="394" class="n">HER2m NSCLC：一线口服 TKI</text><text x="388" y="389" class="b">9/9 FDA 扩大 sevabertinib 至一线；SOHO-01 ORR 75%</text><text x="388" y="418" class="s">此前 zongertinib 已于 2/26 获一线加速批准</text><text x="1030" y="389" class="b">Leader：zongertinib；Challenger：sevabertinib</text><text x="1030" y="418" class="s">两者均已获批；无头对头证据，不按单臂 ORR 排疗效高低</text><text x="1545" y="389" class="tag">Sci 高｜Pharma 高｜Capital 中高</text><text x="1545" y="418" class="s">Crowding 高｜小人群已进入双药竞争</text>
+<line x1="72" y1="449" x2="1848" y2="449" stroke="#e6ebf0"/>
+
+<text x="76" y="498" class="n">DM1：DMPK 降低</text><text x="388" y="493" class="b">9/8 del-desiran HARBOR Ⅲ期未达 vHOT 主要终点</text><text x="388" y="522" class="s">Novartis 尚未宣布终止，开发路径待定</text><text x="1030" y="493" class="b">Leader：z-basivarsen；Watch：del-desiran</text><text x="1030" y="522" class="s">z-basivarsen 注册性扩展继续，Q1 2027 读出；同一 vHOT 指标风险上升</text><text x="1545" y="493" class="tag">Sci 高｜Pharma 中高｜Capital 中</text><text x="1545" y="522" class="s">Crowding 中｜终点可解释性成为核心折价</text>
+<line x1="72" y1="553" x2="1848" y2="553" stroke="#e6ebf0"/>
+
+<text x="76" y="602" class="n">DLL3：一线 ES-SCLC 维持</text><text x="388" y="597" class="b">9/8 DeLLphi-305：tarlatamab+durvalumab OS 阳性</text><text x="388" y="626" class="s">PFS、ORR 同时达标；HR 与绝对 OS 尚未披露</text><text x="1030" y="597" class="b">Leader：tarlatamab+durvalumab；直接对照：durvalumab</text><text x="1030" y="626" class="s">从二线获批药向一线维持推进，等待完整效应量</text><text x="1545" y="597" class="tag">Sci 高｜Pharma 高｜Capital 高</text><text x="1545" y="626" class="s">Crowding 中｜先发优势进一步扩大</text>
+<line x1="72" y1="657" x2="1848" y2="657" stroke="#e6ebf0"/>
+
+<text x="76" y="706" class="n">口服 SERD：全人群一线</text><text x="388" y="701" class="b">9/11 SERENA-4：camizestrant+palbociclib 未达 PFS 主要终点</text><text x="388" y="730" class="s">与 3 月 persevERA 的 giredestrant+palbociclib 失败形成同方向证据</text><text x="1030" y="701" class="b">Leader：暂无；Watch：camizestrant / giredestrant</text><text x="1030" y="730" class="s">camizestrant 的 ESR1 ctDNA 触发换药适应症仍成立，属于不同患者选择</text><text x="1545" y="701" class="tag">Sci 高｜Pharma 高｜Capital 中</text><text x="1545" y="730" class="s">Crowding 高｜全人群一线替代 AI 的吸引力下降</text>
+
+<rect x="72" y="778" width="1776" height="102" rx="14" fill="#eef4f8"/>
+<text x="94" y="811" class="h">Who Entered / Advanced / Failed / Exited</text>
+<text x="94" y="842" class="b">Entered：ISEMBYLD；sevabertinib 一线标签　｜　Advanced：tarlatamab+durvalumab 一线维持 OS 阳性</text>
+<text x="94" y="870" class="b">Failed / De-ranked：del-desiran HARBOR；camizestrant SERENA-4　｜　Exited：本周无已确认终止项目</text>
+
+<rect x="48" y="934" width="1824" height="98" rx="18" fill="#12334f"/>
+<text x="76" y="970" class="white" style="font-size:18px;font-weight:700">下一项最可能改变竞争地图的催化剂</text>
+<text x="76" y="1002" class="foot">2026-09-15 WCLC：全球 HARMONi 更新 OS（ivonescimab+化疗，EGFRm NSCLC post-TKI）</text>
+<text x="48" y="1061" class="s">图中信息来自本期报告，完整证据及来源见HTML正文；本图不替代原始证据。</text>
+</svg>
