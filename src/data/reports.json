@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-14T13:21:35.345Z",
+  "generatedAt": "2026-09-17T12:05:31.294Z",
   "tracks": {
     "ai4s": {
       "label": "AI for Science",
@@ -167,13 +167,22 @@
       "direction": "临床试验 · 申报审评 · 药品安全",
       "reports": [
         {
+          "slug": "reports-2026-Global_Clinical_Regulatory_2026-09-17",
+          "title": "Clinical Regulatory Intelligence Brief｜2026-09-17",
+          "date": "2026-09-17",
+          "url": "/reports/clinical-regulatory/reports/2026/Global_Clinical_Regulatory_2026-09-17.html",
+          "format": "html",
+          "tags": [],
+          "latest": true
+        },
+        {
           "slug": "reports-2026-Global_Clinical_Regulatory_2026-09-10",
           "title": "Clinical Regulatory Intelligence Brief｜2026-09-10",
           "date": "2026-09-10",
           "url": "/reports/clinical-regulatory/reports/2026/Global_Clinical_Regulatory_2026-09-10.html",
           "format": "html",
           "tags": [],
-          "latest": true
+          "latest": false
         },
         {
           "slug": "reports-2026-Global_Clinical_Regulatory_2026-09-03",
