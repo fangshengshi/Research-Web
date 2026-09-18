@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-17T12:05:31.294Z",
+  "generatedAt": "2026-09-18T06:22:03Z",
   "tracks": {
     "ai4s": {
       "label": "AI for Science",
@@ -8,13 +8,22 @@
       "direction": "计算生物学 · AI 药物研发 · 科研基础设施",
       "reports": [
         {
+          "slug": "reports-2026-AI4S_Biopharma_Weekly_2026-09-18",
+          "title": "AI4S 生物医药产业与投资观察周报｜2026-09-18",
+          "date": "2026-09-18",
+          "url": "/reports/ai4s/reports/2026/AI4S_Biopharma_Weekly_2026-09-18.html",
+          "format": "html",
+          "tags": [],
+          "latest": true
+        },
+        {
           "slug": "reports-2026-AI4S_Biopharma_Weekly_2026-09-11",
           "title": "AI4S 生物医药产业与投资观察周报｜2026-09-11",
           "date": "2026-09-11",
           "url": "/reports/ai4s/reports/2026/AI4S_Biopharma_Weekly_2026-09-11.html",
           "format": "html",
           "tags": [],
-          "latest": true
+          "latest": false
         },
         {
           "slug": "reports-2026-AI4S_Biopharma_Weekly_2026-09-04",
