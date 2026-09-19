@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<defs><style>
+text{font-family:"Noto Sans CJK SC","Microsoft YaHei","PingFang SC",sans-serif;fill:#172033}
+.t{font-size:43px;font-weight:700;fill:#fff}.s{font-size:18px;fill:#dbe7f0}.h{font-size:18px;font-weight:700;fill:#506074}
+.n{font-size:22px;font-weight:700}.b{font-size:17px}.r{font-size:17px;font-weight:600}.heat{font-size:15px;fill:#475a6e}.foot{font-size:15px;fill:#dce7ef}
+</style><filter id="sh" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="3" stdDeviation="7" flood-color="#0b1d30" flood-opacity=".12"/></filter></defs>
+<rect width="1920" height="1080" fill="#f3f6f9"/><rect width="1920" height="150" fill="#10304a"/>
+<text x="70" y="66" class="t">全球生物医药靶点与竞争格局更新</text>
+<text x="72" y="106" class="s">Target &amp; Competition Map｜数据截止：2026-09-19 08:27 SGT｜研究窗口：2026-09-12 09:00—2026-09-19 08:27 SGT</text>
+<rect x="54" y="180" width="1812" height="716" rx="20" fill="#fff" filter="url(#sh)"/>
+<text x="82" y="222" class="h">方向</text><text x="420" y="222" class="h">本周新增证据</text><text x="1160" y="222" class="h">竞争位置</text><text x="1550" y="222" class="h">Heat / Crowding</text>
+<line x1="78" y1="240" x2="1840" y2="240" stroke="#dbe2e9" stroke-width="2"/>
+
+<text x="82" y="286" class="n">B7-H3 ADC｜复发 SCLC</text>
+<text x="420" y="276" class="b">Ris-Rez：III期 OS 18.5 vs 10.3月，HR 0.46</text><text x="420" y="310" class="b">Tam-Peli：III期 OS 13.3 vs 9.4月，HR 0.46</text>
+<text x="1160" y="276" class="r">Leader：Ris-Rez / Tam-Peli</text><text x="1160" y="310" class="b">US监管领先：I-DXd，PDUFA 10/10</text>
+<text x="1550" y="294" class="heat">科学 高｜药企 高｜资本 高｜竞争 高</text>
+<line x1="78" y1="370" x2="1840" y2="370" stroke="#e4e9ef" stroke-width="1"/>
+<text x="82" y="422" class="n">PD-1×VEGF｜1L PD-L1+ NSCLC</text>
+<text x="420" y="412" class="b">HARMONi-2：OS 30.8 vs 22.6月，HR 0.73</text><text x="420" y="446" class="b">TPS≥50%：HR 0.58；中国随机III期</text>
+<text x="1160" y="412" class="r">Leader（中国）：ivonescimab</text><text x="1160" y="446" class="b">全球验证：HARMONi-7 正在招募</text>
+<text x="1550" y="430" class="heat">科学 高｜药企 高｜资本 高｜竞争 中</text>
+<line x1="78" y1="506" x2="1840" y2="506" stroke="#e4e9ef" stroke-width="1"/>
+<text x="82" y="558" class="n">HER2m NSCLC｜一线</text>
+<text x="420" y="548" class="b">T-DXd III期：PFS 14.3 vs 8.3月，HR 0.63</text><text x="420" y="582" class="b">OS尚未成熟；ILD/肺炎 20.8%，Grade 5 1.8%</text>
+<text x="1160" y="548" class="r">随机证据 Leader：T-DXd</text><text x="1160" y="582" class="b">美国已批口服：zongertinib / sevabertinib</text>
+<text x="1550" y="566" class="heat">科学 高｜药企 高｜资本 高｜竞争 高</text>
+<line x1="78" y1="642" x2="1840" y2="642" stroke="#e4e9ef" stroke-width="1"/>
+<text x="82" y="694" class="n">Kv7.2/7.3｜癫痫 / 精神科</text>
+<text x="420" y="684" class="b">azetukalner：焦点性癫痫 NDA 已提交</text><text x="420" y="718" class="b">MDD/BPD 新患者入组暂缓；既入组患者继续</text>
+<text x="1160" y="684" class="r">癫痫 Leader：azetukalner</text><text x="1160" y="718" class="b">Challenger：opakalim，RISE3 2H26 读出</text>
+<text x="1550" y="702" class="heat">科学 中高｜药企 高｜资本 高｜竞争 中</text>
+<line x1="78" y1="778" x2="1840" y2="778" stroke="#e4e9ef" stroke-width="1"/>
+<text x="82" y="830" class="n">SGSH / MPS IIIA</text>
+<text x="420" y="820" class="b">FAYUVI：9/17 FDA 标准完全批准，首个获批治疗</text><text x="420" y="854" class="b">AAV9 单次静脉；适用于保留神经发育功能的儿童</text>
+<text x="1160" y="820" class="r">Leader：FAYUVI（已获批）</text><text x="1160" y="854" class="b">Watch：DNL126（跨BBB酶替代）</text>
+<text x="1550" y="838" class="heat">科学 高｜药企 中｜资本 中｜竞争 低</text>
+
+<rect x="54" y="922" width="1812" height="104" rx="18" fill="#10304a"/>
+<text x="82" y="955" class="s" style="font-weight:700">Who Entered / Advanced / Paused / Exited</text>
+<text x="82" y="985" class="foot">Entered：FAYUVI｜Advanced：Ris-Rez、Tam-Peli、T-DXd、ivonescimab、azetukalner｜Paused：azetukalner 精神科新入组｜Exited：本期 Priority 5 无</text>
+<text x="82" y="1015" class="foot">下一项最可能改变竞争地图的催化剂：2026-10-10 I-DXd 美国 FDA PDUFA</text>
+<text x="54" y="1060" style="font-family:'Noto Sans CJK SC',sans-serif;font-size:15px;fill:#667085">图中信息来自本期报告，完整证据及来源见HTML正文；本图不替代原始证据。</text>
+</svg>
