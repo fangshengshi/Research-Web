@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-19T11:32:39.408Z",
+  "generatedAt": "2026-09-21T13:21:25.684Z",
   "tracks": {
     "ai4s": {
       "label": "AI for Science",
@@ -150,13 +150,22 @@
       "direction": "授权合作 · 并购交易 · 交易条款",
       "reports": [
         {
+          "slug": "reports-2026-Global_Biopharma_BD_2026-09-21",
+          "title": "全球生物医药BD与交易情报周报｜2026-09-21",
+          "date": "2026-09-21",
+          "url": "/reports/bd-deals/reports/2026/Global_Biopharma_BD_2026-09-21.html",
+          "format": "html",
+          "tags": [],
+          "latest": true
+        },
+        {
           "slug": "reports-2026-Global_Biopharma_BD_2026-09-14",
           "title": "全球生物医药BD与交易情报周报｜2026-09-14",
           "date": "2026-09-14",
           "url": "/reports/bd-deals/reports/2026/Global_Biopharma_BD_2026-09-14.html",
           "format": "html",
           "tags": [],
-          "latest": true
+          "latest": false
         },
         {
           "slug": "reports-2026-Global_Biopharma_BD_2026-09-08",
