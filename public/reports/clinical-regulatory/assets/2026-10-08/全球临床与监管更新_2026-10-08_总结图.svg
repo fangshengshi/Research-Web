@@ -1,0 +1,46 @@
+<svg id="summary" class="hero" xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-label="全球临床与监管更新：伏美替尼主要终点失败、艾可瑞妥单抗一线阳性、VAX-31逐型差异及FDA新标签">
+<rect width="1920" height="1080" fill="#f6f8f5"/>
+<rect x="0" y="0" width="1920" height="12" fill="#14776e"/>
+<style>#summary text{font-family:"Noto Sans CJK SC","PingFang SC","Microsoft YaHei",sans-serif;fill:#193247}#summary .title{font-size:48px;font-weight:700}#summary .sub{font-size:23px;fill:#5c6e79}#summary .tag{font-size:21px;font-weight:700}#summary .head{font-size:31px;font-weight:700}#summary .body{font-size:26px}#summary .small{font-size:22px;fill:#5c6e79}#summary .pos{fill:#14776e}#summary .neg{fill:#a34250}#summary .gold{fill:#94631a}</style>
+<text x="68" y="91" class="title">全球临床与监管更新｜Clinical &amp; Regulatory</text>
+<text x="70" y="141" class="sub">数据截止：2026-10-08 08:06（UTC+8）　｜　重制核验版　｜　怀格研究</text>
+<line x1="68" y1="177" x2="1852" y2="177" stroke="#d9e2e5" stroke-width="2"/>
+<rect x="68" y="211" width="870" height="350" rx="12" fill="#ffffff" stroke="#d9e2e5"/>
+<rect x="68" y="211" width="7" height="350" rx="3" fill="#a34250"/>
+<text x="99" y="254" class="tag neg">阴性 · 中证据 · 随机Ⅲ期</text>
+<text x="99" y="306" class="head">伏美替尼：一线主要PFS未达标</text>
+<text x="99" y="356" class="body">BICR PFS 11.0 vs 9.5个月；HR 0.75</text>
+<text x="99" y="395" class="body">95%CI 0.55–1.02；P=0.0654</text>
+<text x="99" y="443" class="body neg">一线无化疗单药的海外注册前景转弱。</text>
+<text x="99" y="486" class="small">研究者评估HR 0.61，无法替代主要终点。</text>
+<text x="99" y="524" class="small">下一证据：评审差异原因、OS和注册方案。</text>
+<rect x="970" y="211" width="882" height="350" rx="12" fill="#ffffff" stroke="#d9e2e5"/>
+<rect x="970" y="211" width="7" height="350" rx="3" fill="#14776e"/>
+<text x="1001" y="254" class="tag pos">阳性 · 中证据 · 随机Ⅲ期</text>
+<text x="1001" y="306" class="head">艾可瑞妥单抗：高危初治DLBCL阳性</text>
+<text x="1001" y="356" class="body">IPI 3–5主要人群：PFS HR 0.49</text>
+<text x="1001" y="395" class="body">95%CI 0.35–0.69；P&lt;0.0001</text>
+<text x="1001" y="443" class="body pos">一线注册依据增强，尚未获得新标签。</text>
+<text x="1001" y="486" class="small">IPI 2–5为关键次要人群，HR同为0.49。</text>
+<text x="1001" y="524" class="small">下一证据：绝对PFS、OS、CRS及严重感染。</text>
+<rect x="68" y="591" width="870" height="350" rx="12" fill="#ffffff" stroke="#d9e2e5"/>
+<rect x="68" y="591" width="7" height="350" rx="3" fill="#94631a"/>
+<text x="99" y="634" class="tag gold">阳性与边界 · 中证据 · 免疫原性Ⅲ期</text>
+<text x="99" y="686" class="head">VAX-31：主要终点达标，逐型有差异</text>
+<text x="99" y="736" class="body">共有血清型主要路径28/28达标；</text>
+<text x="99" y="775" class="body">对PCV21逐型新界值达标17/19。</text>
+<text x="99" y="823" class="body gold">3、12F未达0.667界值；非疫苗整体失败。</text>
+<text x="99" y="866" class="small">31价疫苗另评估交叉反应20B，并非32价。</text>
+<text x="99" y="904" class="small">下一证据：OPUS-2/3及生产批次一致性。</text>
+<rect x="970" y="591" width="882" height="350" rx="12" fill="#ffffff" stroke="#d9e2e5"/>
+<rect x="970" y="591" width="7" height="350" rx="3" fill="#27658d"/>
+<text x="1001" y="634" class="tag" fill="#27658d">监管变化 · 高证据 · FDA正式批准</text>
+<text x="1001" y="686" class="head">新标签：乳腺癌维持治疗与初治CLL</text>
+<text x="1001" y="736" class="body">图卡替尼：PFS 24.9 vs 16.3个月；HR 0.64</text>
+<text x="1001" y="775" class="body">匹妥布替尼：对BR的PFS HR 0.20</text>
+<text x="1001" y="823" class="body pos">可用治疗阶段扩大；两项OS均未成熟。</text>
+<text x="1001" y="866" class="small">保留诱导后无进展、无已知17p缺失等限制。</text>
+<text x="1001" y="904" class="small">图卡替尼肝毒性黑框警告须纳入净获益。</text>
+<line x1="68" y1="976" x2="1852" y2="976" stroke="#d9e2e5" stroke-width="2"/>
+<text x="70" y="1025" class="small">图中信息来自本期报告，完整证据及来源见HTML正文；本图不替代原始证据。</text>
+</svg>
