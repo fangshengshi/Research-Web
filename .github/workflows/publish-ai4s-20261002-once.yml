@@ -17,8 +17,18 @@ jobs:
           ARTIFACT_URL: 'https://sdmntprindiasocentral.oaiusercontent.com/files/00000000-06a0-8211-9cbb-eeaa1bcc0e23/raw?se=2026-10-08T01%3A26%3A16Z&sp=r&sv=2026-02-06&sr=b&scid=7dd9cc61-7fda-52aa-aef5-b3f3b861529f&skoid=fb469448-2cc9-41bd-a5a6-6e020952b47a&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-08T00%3A04%3A20Z&ske=2026-10-09T00%3A04%3A20Z&sks=b&skv=2026-02-06&sig=8/w0hZ7Nt4I0FuewqG3dJpLRQV0L5AiLfqR3QWW5g7M%3D'
         run: |
           python3 - <<'PY'
-          import os, urllib.request, json, base64, textwrap
+          import os, urllib.request, urllib.error, json, base64, textwrap
           assert os.environ['GH_TOKEN'], 'Configured source repository token is missing'
+          print('::add-mask::' + os.environ['ARTIFACT_URL'])
+          try:
+              request = urllib.request.Request(os.environ['ARTIFACT_URL'], headers={'User-Agent': 'Mozilla/5.0'})
+              with urllib.request.urlopen(request, timeout=60) as r:
+                  original = r.read()
+              print('Artifact transfer bytes:', len(original))
+          except urllib.error.HTTPError as ex:
+              print('Artifact transfer HTTP status:', ex.code)
+              print('Response:', ex.read(1500).decode('utf-8', 'replace'))
+              raise SystemExit(1)
           url = 'https://api.github.com/repos/fangshengshi/Research/contents/.github/workflows/publish-ai4s-20261002-once.yml?ref=8facc1cc789b280667018bd7a38c3fcb4234e6ac'
           req = urllib.request.Request(url, headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Accept': 'application/vnd.github+json', 'User-Agent': 'verified-ai4s-publisher'})
           with urllib.request.urlopen(req, timeout=60) as r:
