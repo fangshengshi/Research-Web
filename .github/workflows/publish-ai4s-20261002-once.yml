@@ -4,52 +4,88 @@ on:
     branches: [publish/ai4s-20261002-verified]
     paths: [.github/workflows/publish-ai4s-20261002-once.yml]
 permissions:
-  contents: read
+  contents: write
   actions: write
+concurrency:
+  group: research-sync
+  cancel-in-progress: false
 jobs:
   publish:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
-      - name: Publish original report to source repository
+      - name: Publish original HTML, image assets and portal index atomically
         env:
-          GH_TOKEN: ${{ secrets.RESEARCH_REPO_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
           ARTIFACT_URL: 'https://sdmntprseasia.oaiusercontent.com/files/00000000-5b58-8207-a442-f2306615ebf7/raw?se=2026-10-08T01%3A30%3A24Z&sp=r&sv=2026-02-06&sr=b&scid=5494e4fc-aa31-5e5f-898d-ba55b020f9dd&skoid=fb469448-2cc9-41bd-a5a6-6e020952b47a&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-07T23%3A38%3A09Z&ske=2026-10-08T23%3A38%3A09Z&sks=b&skv=2026-02-06&sig=XevaW0Lc3jkA91BQdE6zcf8NURrC2MA3sE6PuR7MNgI%3D'
         run: |
           python3 - <<'PY'
-          import os, urllib.request, urllib.error, json, base64, textwrap
-          assert os.environ['GH_TOKEN'], 'Configured source repository token is missing'
-          print('::add-mask::' + os.environ['ARTIFACT_URL'])
-          request = urllib.request.Request(os.environ['ARTIFACT_URL'], headers={'User-Agent': 'Mozilla/5.0'})
-          with urllib.request.urlopen(request, timeout=60) as r:
-              original = r.read()
-          print('Artifact transfer bytes:', len(original))
-          url = 'https://api.github.com/repos/fangshengshi/Research/contents/.github/workflows/publish-ai4s-20261002-once.yml?ref=8facc1cc789b280667018bd7a38c3fcb4234e6ac'
-          req = urllib.request.Request(url, headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Accept': 'application/vnd.github+json', 'User-Agent': 'verified-ai4s-publisher'})
-          with urllib.request.urlopen(req, timeout=60) as r:
-              document = base64.b64decode(json.load(r)['content']).decode('utf-8')
-          code = document.split("python3 - <<'PY'\n", 1)[1].rsplit('\n          PY', 1)[0]
-          code = textwrap.dedent(code)
-          assert "repo = 'fangshengshi/Research'" in code and '3851483a1f2a7bcb095e94672f3fc2c89945b70a4edb3d4cad32b67fcfef40e4' in code
-          old = 'data = urllib.request.urlopen(url, timeout=60).read()'
-          assert code.count(old) == 1
-          code = code.replace(old, 'data = original_report_bytes')
-          try:
-              exec(compile(code, 'verified-source-publisher', 'exec'), {'__name__': '__main__', 'original_report_bytes': original})
-          except urllib.error.HTTPError as ex:
-              print('Publication API HTTP status:', ex.code)
-              print(ex.read(1200).decode('utf-8', 'replace'))
-              raise SystemExit(1)
-          PY
-      - name: Trigger existing portal workflow without changing configuration
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          python3 - <<'PY'
-          import os, json, urllib.request
-          url = 'https://api.github.com/repos/fangshengshi/Research-Web/actions/workflows/sync-research.yml/dispatches'
-          req = urllib.request.Request(url, data=json.dumps({'ref':'main'}).encode(), method='POST', headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'], 'Accept':'application/vnd.github+json', 'Content-Type':'application/json', 'User-Agent':'verified-ai4s-publisher'})
-          with urllib.request.urlopen(req, timeout=60) as r:
-              assert r.status == 204
-          print('Existing sync-research.yml dispatched on main; its configuration was not changed.')
+          import base64, hashlib, json, os, re, time, urllib.request, urllib.error
+          from datetime import datetime, timezone
+          from html.parser import HTMLParser
+          repo = 'fangshengshi/Research-Web'
+          digest = '3851483a1f2a7bcb095e94672f3fc2c89945b70a4edb3d4cad32b67fcfef40e4'
+          req = urllib.request.Request(os.environ['ARTIFACT_URL'], headers={'User-Agent':'Mozilla/5.0'})
+          with urllib.request.urlopen(req, timeout=60) as r: original = r.read()
+          assert len(original) == 404887 and hashlib.sha256(original).hexdigest() == digest
+          text = original.decode('utf-8')
+          assert text.startswith('<!DOCTYPE html>') and text.rstrip().endswith('</html>')
+          headers = {'Authorization':'Bearer '+os.environ['GH_TOKEN'], 'Accept':'application/vnd.github+json', 'X-GitHub-Api-Version':'2022-11-28','User-Agent':'verified-ai4s-publisher'}
+          def api(p, b=None, method=None, missing=False):
+              request=urllib.request.Request('https://api.github.com/repos/'+repo+p,data=None if b is None else json.dumps(b).encode(),headers=headers,method=method or ('POST' if b is not None else 'GET'))
+              try:
+                  with urllib.request.urlopen(request,timeout=60) as r:
+                      body=r.read();return json.loads(body) if body else None
+              except urllib.error.HTTPError as e:
+                  if missing and e.code==404:return None
+                  raise
+          def blob(data):return api('/git/blobs',{'content':base64.b64encode(data).decode(),'encoding':'base64'})['sha']
+          report_sha=blob(original)
+          print('Original report blob:',report_sha,'bytes:',len(original),'sha256:',digest)
+          assert report_sha=='9e3c08c57bb48e5ec2a10b9ab536c4fd9f536e53'
+          images=[]
+          for s in re.findall(r'src="(data:image/webp;base64,[^"]+)"',text):
+              b=base64.b64decode(s.split(',',1)[1],validate=True)
+              assert b[:4]==b'RIFF' and b[8:12]==b'WEBP'
+              if b not in images:images.append(b)
+          assert len(images)==3
+          assets={}
+          for name,b in zip(['cover','lab-loop','provenance'],images):
+              p='public/assets/ai4s/2026-10-02/'+name+'.webp'
+              assets[p]=blob(b)
+              print('Verified asset:',p,assets[p],len(b))
+          archive='public/reports/ai4s/reports/2026/AI4S_Biopharma_Weekly_2026-10-02.html'
+          latest='public/reports/ai4s/latest.html'
+          manifest='src/data/reports.json'
+          commit=None
+          for attempt in range(4):
+              head=api('/git/ref/heads/main')['object']['sha']
+              root=api('/git/commits/'+head)['tree']['sha']
+              current=api('/contents/'+manifest+'?ref='+head)
+              metadata=json.loads(base64.b64decode(current['content']))
+              entries=metadata['tracks']['ai4s']['reports']
+              existing=[x for x in entries if x.get('date')=='2026-10-02']
+              if not existing:
+                  entries.append({'slug':'reports-2026-AI4S_Biopharma_Weekly_2026-10-02','title':'AI4S 生物医药产业与投资观察周报｜2026-10-02','date':'2026-10-02','url':'/reports/ai4s/reports/2026/AI4S_Biopharma_Weekly_2026-10-02.html','format':'html','tags':[],'latest':False})
+              entries.sort(key=lambda x:(x.get('date',''),x.get('slug','')),reverse=True)
+              for index,item in enumerate(entries):item['latest']=(index==0)
+              metadata['generatedAt']=datetime.now(timezone.utc).isoformat().replace('+00:00','Z')
+              mblob=blob((json.dumps(metadata,ensure_ascii=False,indent=2)+'\n').encode())
+              updates={archive:report_sha,manifest:mblob,**assets}
+              if entries[0].get('date')=='2026-10-02':updates[latest]=report_sha
+              tree=api('/git/trees',{'base_tree':root,'tree':[{'path':p,'mode':'100644','type':'blob','sha':sha} for p,sha in updates.items()]})['sha']
+              c=api('/git/commits',{'message':'Publish complete AI4S report 2026-10-02 with verified images and latest index','tree':tree,'parents':[head]})['sha']
+              try:
+                  api('/git/refs/heads/main',{'sha':c,'force':False},'PATCH');commit=c;break
+              except urllib.error.HTTPError as e:
+                  if e.code not in [409,422] or attempt==3:raise
+                  time.sleep(2+attempt)
+          assert commit
+          for p in [archive]+([latest] if latest in updates else []):
+              r=api('/contents/'+p+'?ref=main')
+              assert r['sha']==report_sha and r['size']==len(original)
+              assert hashlib.sha256(base64.b64decode(r['content'])).hexdigest()==digest
+          print('PUBLICATION_COMMIT',commit)
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+              f.write('Published original AI4S 2026-10-02 report.\n\nCommit: '+commit+'\n\nSHA-256: '+digest+'\n\nBytes: 404887. Three unique images verified.\n')
           PY
