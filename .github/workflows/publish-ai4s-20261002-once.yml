@@ -14,21 +14,16 @@ jobs:
       - name: Publish original report to source repository
         env:
           GH_TOKEN: ${{ secrets.RESEARCH_REPO_TOKEN }}
-          ARTIFACT_URL: 'https://sdmntprindiasocentral.oaiusercontent.com/files/00000000-06a0-8211-9cbb-eeaa1bcc0e23/raw?se=2026-10-08T01%3A26%3A16Z&sp=r&sv=2026-02-06&sr=b&scid=7dd9cc61-7fda-52aa-aef5-b3f3b861529f&skoid=fb469448-2cc9-41bd-a5a6-6e020952b47a&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-08T00%3A04%3A20Z&ske=2026-10-09T00%3A04%3A20Z&sks=b&skv=2026-02-06&sig=8/w0hZ7Nt4I0FuewqG3dJpLRQV0L5AiLfqR3QWW5g7M%3D'
+          ARTIFACT_URL: 'https://sdmntprseasia.oaiusercontent.com/files/00000000-5b58-8207-a442-f2306615ebf7/raw?se=2026-10-08T01%3A30%3A24Z&sp=r&sv=2026-02-06&sr=b&scid=5494e4fc-aa31-5e5f-898d-ba55b020f9dd&skoid=fb469448-2cc9-41bd-a5a6-6e020952b47a&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-07T23%3A38%3A09Z&ske=2026-10-08T23%3A38%3A09Z&sks=b&skv=2026-02-06&sig=XevaW0Lc3jkA91BQdE6zcf8NURrC2MA3sE6PuR7MNgI%3D'
         run: |
           python3 - <<'PY'
           import os, urllib.request, urllib.error, json, base64, textwrap
           assert os.environ['GH_TOKEN'], 'Configured source repository token is missing'
           print('::add-mask::' + os.environ['ARTIFACT_URL'])
-          try:
-              request = urllib.request.Request(os.environ['ARTIFACT_URL'], headers={'User-Agent': 'Mozilla/5.0'})
-              with urllib.request.urlopen(request, timeout=60) as r:
-                  original = r.read()
-              print('Artifact transfer bytes:', len(original))
-          except urllib.error.HTTPError as ex:
-              print('Artifact transfer HTTP status:', ex.code)
-              print('Response:', ex.read(1500).decode('utf-8', 'replace'))
-              raise SystemExit(1)
+          request = urllib.request.Request(os.environ['ARTIFACT_URL'], headers={'User-Agent': 'Mozilla/5.0'})
+          with urllib.request.urlopen(request, timeout=60) as r:
+              original = r.read()
+          print('Artifact transfer bytes:', len(original))
           url = 'https://api.github.com/repos/fangshengshi/Research/contents/.github/workflows/publish-ai4s-20261002-once.yml?ref=8facc1cc789b280667018bd7a38c3fcb4234e6ac'
           req = urllib.request.Request(url, headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Accept': 'application/vnd.github+json', 'User-Agent': 'verified-ai4s-publisher'})
           with urllib.request.urlopen(req, timeout=60) as r:
@@ -36,7 +31,15 @@ jobs:
           code = document.split("python3 - <<'PY'\n", 1)[1].rsplit('\n          PY', 1)[0]
           code = textwrap.dedent(code)
           assert "repo = 'fangshengshi/Research'" in code and '3851483a1f2a7bcb095e94672f3fc2c89945b70a4edb3d4cad32b67fcfef40e4' in code
-          exec(compile(code, 'verified-source-publisher', 'exec'), {'__name__': '__main__'})
+          old = 'data = urllib.request.urlopen(url, timeout=60).read()'
+          assert code.count(old) == 1
+          code = code.replace(old, 'data = original_report_bytes')
+          try:
+              exec(compile(code, 'verified-source-publisher', 'exec'), {'__name__': '__main__', 'original_report_bytes': original})
+          except urllib.error.HTTPError as ex:
+              print('Publication API HTTP status:', ex.code)
+              print(ex.read(1200).decode('utf-8', 'replace'))
+              raise SystemExit(1)
           PY
       - name: Trigger existing portal workflow without changing configuration
         env:
